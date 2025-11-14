@@ -19,7 +19,7 @@ app.use(express.json());
 app.use(morgan("combined"));
 
 const corsOptions = {
-  origin: ["https://a2m-transport-1.onrender.com"],
+  origin: ["http://localhost:5173/"],
   methods: ["GET", "POST", "PUT", "DELETE"],
   credentials: true,
 };
