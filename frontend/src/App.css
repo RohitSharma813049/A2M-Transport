@@ -1,0 +1,44 @@
+:root {
+  /* Brand Colors */
+  --primary-color: #2563eb; /* Blue (A2M Main) */
+  --primary-dark: #1e40af; /* Darker blue for hover */
+  --secondary-color: #1f2937; /* Dark gray background */
+  --text-light: #f9fafb; /* Light text */
+  --text-dark: #111827; /* Dark text */
+  --accent-color: #60a5fa; /* Light blue accent */
+
+  /* Backgrounds */
+  --bg-light: #ffffff;
+  --bg-dark: #0f172a;
+
+  /* Borders & Shadows */
+  --border-color: #e5e7eb;
+  --shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Utility Classes */
+.bg-primary {
+  background-color: var(--primary-color);
+}
+
+.text-primary {
+  color: var(--primary-color);
+}
+
+.bg-dark {
+  background-color: var(--bg-dark);
+}
+
+.text-light {
+  color: var(--text-light);
+}
+
+.text-dark {
+  color: var(--text-dark);
+}
+
+.shadow-custom {
+  box-shadow: var(--shadow);
+}
+
+

@@ -1,0 +1,13 @@
+import { Outlet } from "react-router-dom";
+import { AdminNavbar } from "../navbar.jsx/adminnavbar";
+
+export function AdminLayout() {
+  return (
+    <div className="min-h-screen bg-gray-100">
+      <AdminNavbar />
+      <div className="p-6">
+        <Outlet />
+      </div>
+    </div>
+  );
+}
