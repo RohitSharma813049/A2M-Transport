@@ -32,26 +32,22 @@ app.use(morgan("combined"));
 // 🌐 CORS CONFIGURATION
 // -------------------------------------
 const allowedOrigins = [
-  "http://localhost:5173",
-  "https://a2m-transport-1.onrender.com",
-  // add other allowed origins if needed
+  "https://a2m-transport-1.onrender.com"
 ];
 
 app.use(
   cors({
     origin: function (origin, callback) {
-      // Allow requests with no origin (mobile apps, curl, server-to-server)
-      if (!origin) return callback(null, true);
-      if (allowedOrigins.indexOf(origin) === -1) {
-        const msg = "The CORS policy for this site does not allow access from the specified Origin.";
-        return callback(new Error(msg), false);
+      if (!origin || allowedOrigins.includes(origin)) {
+        return callback(null, true);
       }
-      return callback(null, true);
+      return callback(new Error("CORS Error: origin not allowed"), false);
     },
-    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
     credentials: true,
+    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"]
   })
 );
+
 
 // -------------------------------------
 // 🚦 ROUTES
