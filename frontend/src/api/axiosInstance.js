@@ -1,7 +1,9 @@
 // src/api/axiosInstance.js
 import axios from "axios";
 
-const API_BASE_URL = "https://a2m-transport.onrender.com";
+const API_BASE_URL =
+  "http://localhost:6523" ||
+  "https://a2m-transport.onrender.com";
 
 const api = axios.create({
   baseURL: API_BASE_URL,
