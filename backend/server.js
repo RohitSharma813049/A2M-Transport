@@ -31,22 +31,14 @@ app.use(morgan("combined"));
 // -------------------------------------
 // 🌐 CORS CONFIGURATION
 // -------------------------------------
-const allowedOrigins = [
-  "https://a2m-transport-1.onrender.com"
-];
-
 app.use(
   cors({
-    origin: function (origin, callback) {
-      if (!origin || allowedOrigins.includes(origin)) {
-        return callback(null, true);
-      }
-      return callback(new Error("CORS Error: origin not allowed"), false);
-    },
+    origin: "https://a2m-transport-1.onrender.com",
     credentials: true,
     methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"]
   })
 );
+
 
 
 // -------------------------------------
