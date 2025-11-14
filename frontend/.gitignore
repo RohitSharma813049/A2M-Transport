@@ -1,30 +1,33 @@
-# Logs
-logs
-*.log
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-pnpm-debug.log*
-lerna-debug.log*
-
-node_modules
-dist
-dist-ssr
-*.local
-
-# Editor directories and files
-.vscode/*
-!.vscode/extensions.json
-.idea
-.DS_Store
-*.suo
-*.ntvs*
-*.njsproj
-*.sln
-*.sw?
-
+# Node project files
 node_modules/
+npm-debug.log
+yarn-debug.log
+yarn-error.log
+package-lock.json
+
+# Environment variables
 .env
+.env.local
+.env.development.local
+.env.production.local
+
+# Build directories
 dist/
 build/
+
+# IDE/editor junk files
+*.sw?
+*.log
 .DS_Store
+*.sln
+*.njsproj
+
+# Vite cache
+.vite/
+
+# Mac / Linux / Windows garbage files
+Thumbs.db
+Desktop.ini
+
+# Optional: if using VSCode
+.vscode/
