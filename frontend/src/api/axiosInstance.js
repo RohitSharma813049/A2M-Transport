@@ -1,9 +1,7 @@
 // src/api/axiosInstance.js
 import axios from "axios";
 
-const API_BASE_URL =
-  import.meta.env.VITE_API_BASE_URL ||
-  "https://a2m-transport.onrender.com";
+const API_BASE_URL = "https://a2m-transport.onrender.com";
 
 const api = axios.create({
   baseURL: API_BASE_URL,
