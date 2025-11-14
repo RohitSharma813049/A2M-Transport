@@ -113,25 +113,6 @@ export function Register() {
           />
         </div>
 
-        {/* ✅ Role Selection */}
-        <div>
-          <label htmlFor="role" className="block mb-1 font-medium">
-            Select Role
-          </label>
-          <select
-            id="role"
-            name="role"
-            value={formData.role}
-            onChange={handleChange}
-            className="w-full px-3 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-400"
-          >
-            <option value="user">User</option>
-            <option value="delivery">Delivery</option>
-            <option value="manager">Manager</option>
-            {/* Optionally, restrict admin creation to backend only */}
-          </select>
-        </div>
-
         <button
           type="submit"
           className="w-full bg-green-600 text-white py-2 rounded hover:bg-green-700 transition font-medium"
