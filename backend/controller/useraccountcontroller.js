@@ -71,7 +71,7 @@ const Logincontroller = async (req,res) =>{
         role : exists.role
     },
     process.env.SECRET_KEY,
-    {expiresIn : "1hr"}
+    {expiresIn : "1h"}
 )
 
     return res.status(200).json({
