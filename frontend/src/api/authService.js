@@ -37,30 +37,30 @@ export const loginUser = async (credentials) => {
   }
 };
 
-// SEND OTP  ✅ FIXED
+// SEND OTP  ✅ CORRECT
 export const sendOtp = async (email) => {
   try {
-    const response = await api.post("/auth/otpsend", { email });
+    const response = await api.post("/auth/user/sendotp", { email });
     return response.data;
   } catch (error) {
     throw new Error(getMsg(error));
   }
 };
 
-// VERIFY OTP  ✅ FIXED
+// VERIFY OTP  ✅ CORRECT
 export const verifyOtp = async (email, otp) => {
   try {
-    const response = await api.post("/auth/otpveryfy", { email, otp });
+    const response = await api.post("/auth/user/veryfyotp", { email, otp });
     return response.data;
   } catch (error) {
     throw new Error(getMsg(error));
   }
 };
 
-// RESET PASSWORD  ✅ FIXED
+// RESET PASSWORD  ✅ CORRECT
 export const resetPassword = async (email, password) => {
   try {
-    const response = await api.post("/auth/resetpassword", {
+    const response = await api.post("/auth/user/resetpassword", {
       email,
       password,
     });
