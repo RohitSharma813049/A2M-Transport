@@ -1,7 +1,7 @@
 import { showError, showSuccess } from "@/utils";
 import React, { useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-import axios from "axios";
+import api from "@/api/axiosInstance"; // IMPORTANT
 
 export function Otpveryfy() {
   const [otp, setOtp] = useState("");
@@ -19,19 +19,10 @@ export function Otpveryfy() {
     }
 
     try {
-      const response = await axios.post(
-        "https://a2m-transport.onrender.com/auth/otpveryfy",
-        { email, otp },
-        {
-          headers: {
-            "Content-Type": "application/json",
-          },
-        }
-      );
+      const response = await api.post("/auth/otpveryfy", { email, otp });
 
-      showSuccess(response.data.message || "OTP verified successfully.");
+      showSuccess(response.data.message || "OTP verified successfully!");
 
-      // Navigate to reset password page with email
       navigate("/account/resetpassword", { state: { email } });
     } catch (error) {
       if (error.response) {
