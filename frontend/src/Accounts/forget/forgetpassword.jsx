@@ -11,7 +11,7 @@ export function Forgetpassword() {
     e.preventDefault();
 
     try {
-      const response = await api.post("/auth/otpsend", { email });
+      const response = await api.post("/auth/user/otpsend", { email });
 
       showSuccess(response.data.message || "OTP sent successfully!");
 

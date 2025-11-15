@@ -19,7 +19,7 @@ export function Otpveryfy() {
     }
 
     try {
-      const response = await api.post("/auth/otpveryfy", { email, otp });
+      const response = await api.post("/auth/user/otpveryfy", { email, otp });
 
       showSuccess(response.data.message || "OTP verified successfully!");
 

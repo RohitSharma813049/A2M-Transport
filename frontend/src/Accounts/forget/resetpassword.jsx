@@ -35,7 +35,7 @@ export function Resetpassword() {
     }
 
     try {
-      const response = await api.post("/auth/resetpassword", {
+      const response = await api.post("/auth/user/resetpassword", {
         email,
         password: formData.password,
       });
