@@ -33,7 +33,7 @@ app.use(morgan("combined"));
 // -------------------------------------
 app.use(
   cors({
-    origin: "https://a2m-transport-1.onrender.com",
+    origin: "*",
     credentials: true,
     methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"]
   })
