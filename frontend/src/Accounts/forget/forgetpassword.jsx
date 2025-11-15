@@ -1,7 +1,7 @@
 import { showError, showSuccess } from "@/utils";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
+import api from "@/api/axiosInstance"; // IMPORTANT
 
 export function Forgetpassword() {
   const [email, setEmail] = useState("");
@@ -11,19 +11,10 @@ export function Forgetpassword() {
     e.preventDefault();
 
     try {
-      const response = await axios.post(
-        "https://a2m-transport.onrender.com/auth/otpsend",
-        { email },
-        {
-          headers: {
-            "Content-Type": "application/json",
-          },
-        }
-      );
+      const response = await api.post("/auth/otpsend", { email });
 
       showSuccess(response.data.message || "OTP sent successfully!");
 
-      // Navigate to OTP Verify page and pass email
       navigate("/account/otpverify", { state: { email } });
     } catch (error) {
       if (error.response) {
