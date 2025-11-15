@@ -1,7 +1,7 @@
 import { showError, showSuccess } from "@/utils";
 import React, { useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-import axios from "axios";
+import api from "@/api/axiosInstance"; // IMPORTANT
 
 export function Resetpassword() {
   const [formData, setFormData] = useState({
@@ -35,18 +35,10 @@ export function Resetpassword() {
     }
 
     try {
-      const response = await axios.post(
-        "https://a2m-transport.onrender.com/auth/resetpassword",
-        {
-          email,
-          password: formData.password,
-        },
-        {
-          headers: {
-            "Content-Type": "application/json",
-          },
-        }
-      );
+      const response = await api.post("/auth/resetpassword", {
+        email,
+        password: formData.password,
+      });
 
       showSuccess(response.data.message || "Password reset successful!");
 
