@@ -1,6 +1,7 @@
 import { showError, showSuccess } from "@/utils";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 export function Forgetpassword() {
   const [email, setEmail] = useState("");
@@ -10,27 +11,26 @@ export function Forgetpassword() {
     e.preventDefault();
 
     try {
-      const response = await fetch("http://localhost:6523/auth/user/sendotp", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ email }),
-      });
+      const response = await axios.post(
+        "https://a2m-transport.onrender.com/auth/otpsend",
+        { email },
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
 
-      const data = await response.json();
+      showSuccess(response.data.message || "OTP sent successfully!");
 
-      if (!response.ok) {
-        showError(data.message || "Something went wrong.");
-        return;
-      }
-
-      showSuccess(data.message || "Reset link sent successfully.");
-
-      // ✅ Navigate to OTP verification page and optionally pass email in state
+      // Navigate to OTP Verify page and pass email
       navigate("/account/otpverify", { state: { email } });
     } catch (error) {
-      showError("Error: " + error.message);
+      if (error.response) {
+        showError(error.response.data.message || "Something went wrong.");
+      } else {
+        showError("Network error. Failed to reach server.");
+      }
     }
   };
 
@@ -52,11 +52,12 @@ export function Forgetpassword() {
             className="w-full px-3 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-400"
           />
         </div>
+
         <button
           type="submit"
           className="w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700 transition font-medium"
         >
-          Send Reset Link
+          Send OTP
         </button>
       </form>
     </div>
