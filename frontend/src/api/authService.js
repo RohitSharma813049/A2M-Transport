@@ -8,7 +8,6 @@ const getMsg = (error) =>
   error?.message ||
   "Something went wrong";
 
-
 /* ===========================
         AUTH APIs
    =========================== */
@@ -28,7 +27,6 @@ export const loginUser = async (credentials) => {
   try {
     const response = await api.post("/auth/login", credentials);
 
-    // Optional: auto-store token
     if (response.data?.Token) {
       localStorage.setItem("token", response.data.Token);
     }
@@ -39,30 +37,30 @@ export const loginUser = async (credentials) => {
   }
 };
 
-// SEND OTP
+// SEND OTP  ✅ FIXED
 export const sendOtp = async (email) => {
   try {
-    const response = await api.post("/auth/send-otp", { email });
+    const response = await api.post("/auth/otpsend", { email });
     return response.data;
   } catch (error) {
     throw new Error(getMsg(error));
   }
 };
 
-// VERIFY OTP
+// VERIFY OTP  ✅ FIXED
 export const verifyOtp = async (email, otp) => {
   try {
-    const response = await api.post("/auth/verify-otp", { email, otp });
+    const response = await api.post("/auth/otpveryfy", { email, otp });
     return response.data;
   } catch (error) {
     throw new Error(getMsg(error));
   }
 };
 
-// RESET PASSWORD
+// RESET PASSWORD  ✅ FIXED
 export const resetPassword = async (email, password) => {
   try {
-    const response = await api.post("/auth/reset-password", {
+    const response = await api.post("/auth/resetpassword", {
       email,
       password,
     });
