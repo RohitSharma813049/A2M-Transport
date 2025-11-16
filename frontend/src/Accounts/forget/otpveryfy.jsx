@@ -1,7 +1,7 @@
 import { showError, showSuccess } from "@/utils";
 import React, { useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-import api from "@/api/axiosInstance"; // IMPORTANT
+import api from "@/api/axiosInstance";
 
 export function Otpveryfy() {
   const [otp, setOtp] = useState("");
@@ -19,7 +19,8 @@ export function Otpveryfy() {
     }
 
     try {
-      const response = await api.post("/auth/user/otpveryfy", { email, otp });
+      // FIXED ROUTE HERE
+      const response = await api.post("/auth/user/veryfyotp", { email, otp });
 
       showSuccess(response.data.message || "OTP verified successfully!");
 
