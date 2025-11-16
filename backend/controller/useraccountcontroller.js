@@ -119,7 +119,7 @@ const Otpsend = async (req,res) =>{
 
     console.log(`otp ${otp}`)
 
-    sendmail({otp, email : exists.email})
+    await sendmail({otp, email : exists.email})
 
     return res.status(200).json({
        message : "Otp send",
